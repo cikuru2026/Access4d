@@ -1,0 +1,14 @@
+{
+  "name": "access4d-site",
+  "version": "0.5.0",
+  "private": true,
+  "description": "Page de présentation d'Access4D (site statique pour Render)",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch & npx --yes serve public -l 4173"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "three": "^0.186.1"
+  }
+}

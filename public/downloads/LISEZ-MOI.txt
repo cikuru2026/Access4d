@@ -1,0 +1,11 @@
+Déposez ici les fichiers à télécharger, avec EXACTEMENT ces noms (ou changez les noms dans public/assets/js/config.js) :
+
+  Access4D-Setup-0.5.0.exe          installateur Windows   (npm run dist:win, sur un PC Windows)
+  access4d_0.5.0_amd64.deb          paquet Linux           (npm run dist:deb)
+  Access4D-0.5.0.AppImage           Linux sans installation (npm run dist:linux)
+  Access4D-0.5.0.apk                Android                (pas encore de version Android)
+
+Tant qu'un fichier est absent, son bouton sur la page affiche « Bientôt disponible ».
+
+Attention : un dépôt GitHub refuse les fichiers de plus de 100 Mo, et le .deb en fait environ 95. Pour de gros fichiers,
+publiez-les plutôt dans une « Release » GitHub et mettez leur adresse complète (https://…) dans config.js.

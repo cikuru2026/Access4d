@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Access4D : le navigateur en 3D qui remonte le temps</title>
+<meta name="description" content="Access4D est un navigateur web où chaque site est un panneau vivant rangé dans un monde 3D, avec une machine à remonter le temps basée sur la Wayback Machine. Windows, Linux, Android.">
+<meta name="theme-color" content="#070b1d">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Access4D : le navigateur en 3D qui remonte le temps">
+<meta property="og:description" content="Chaque site est un panneau vivant dans un monde 3D. Chaque panneau remonte dans les archives du web.">
+<meta property="og:image" content="img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/config.js"></script>
+<script type="module" src="assets/js/main.js"></script>
+</head>
+<body>
+<a class="skip" href="#telecharger">Aller au téléchargement</a>
+
+<!-- Jauge de profondeur : le défilement de la page remonte le temps, comme le Tunnel d'Access4D -->
+<div class="depth" aria-hidden="true">
+  <div class="depth__year" id="depth-year">2026</div>
+  <div class="depth__rail"><i class="depth__thumb" id="depth-thumb"></i></div>
+  <div class="depth__label">profondeur</div>
+</div>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Access4D, haut de page">
+    <img src="img/favicon.png" width="28" height="28" alt="">
+    <span>Access4D</span>
+  </a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#mondes">Mondes</a>
+    <a href="#temps">Temps</a>
+    <a href="#fonctions">Fonctions</a>
+    <a href="#commandes">Commandes</a>
+    <a href="#legerete">Légèreté</a>
+    <a href="#questions">Questions</a>
+  </nav>
+  <a class="btn btn--small" href="#telecharger" data-os-cta>Télécharger</a>
+</header>
+
+<main id="top">
+
+<!-- ============================================================ HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero__fallback" aria-hidden="true"></div>
+
+  <div class="hero__readout" id="hero-readout" aria-hidden="true">
+    <span>XW <b id="ro-xw">000</b>°</span>
+    <span>YW <b id="ro-yw">000</b>°</span>
+    <span>ZW <b id="ro-zw">000</b>°</span>
+  </div>
+
+  <div class="hero__copy">
+    <p class="hero__tag"><span class="dot"></span><span>Prototype v<span data-version>0.5</span> · Windows, Linux, Android</span></p>
+    <h1 id="hero-title">Le web a trois dimensions.<br>Il en a une quatrième : le temps.</h1>
+    <p class="hero__lead">Access4D est un navigateur où chaque site est un panneau vivant, rangé dans un monde que vous traversez. Un geste, et ce panneau remonte dans les archives de la Wayback Machine.</p>
+    <div class="hero__actions">
+      <a class="btn" href="#telecharger" data-os-cta>Télécharger Access4D</a>
+      <a class="btn btn--ghost" href="#mondes">Voir ce qu'il sait faire</a>
+    </div>
+    <p class="hero__hint">Bougez la souris : vous tournez dans la quatrième dimension.</p>
+  </div>
+  <a class="hero__scroll" href="#apercu" aria-label="Descendre">
+    <span></span>
+  </a>
+</section>
+
+<!-- ============================================================ APERÇU -->
+<section class="sec sec--statement" id="apercu" aria-labelledby="apercu-title">
+  <div class="wrap">
+    <h2 class="statement" id="apercu-title">Un onglet est une ligne dans une liste. Ici, un site est un panneau que vous voyez, contournez, rapprochez, et dont vous remontez l'histoire.</h2>
+    <div class="trio">
+      <p><strong>Pages vivantes.</strong> Chaque panneau est un vrai Chromium isolé : vous cliquez, tapez, vous connectez, comme dans n'importe quel navigateur.</p>
+      <p><strong>Des mondes à explorer.</strong> Constellation, Ville, Tunnel. Vous volez entre vos pages au clavier, à la souris ou au doigt.</p>
+      <p><strong>Une machine à remonter le temps.</strong> Chaque panneau peut afficher ses captures passées, de 1996 à aujourd'hui.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ MONDES -->
+<section class="sec sec--worlds" id="mondes" aria-labelledby="mondes-title">
+  <div class="wrap">
+    <h2 class="h2" id="mondes-title">Vos pages, rangées dans un monde.</h2>
+    <p class="lede">Ces 72 panneaux sont les mêmes d'un monde à l'autre. Choisissez comment Access4D les range, puis faites glisser pour tourner autour.</p>
+  </div>
+
+  <div class="worlds" id="worlds">
+    <canvas class="worlds__canvas" id="worlds-canvas" aria-label="Démonstration 3D : 72 panneaux qui se réorganisent selon le monde choisi" role="img"></canvas>
+    <div class="worlds__fallback" aria-hidden="true"></div>
+
+    <div class="worlds__caption" aria-live="polite">
+      <h3 id="world-name">Constellation</h3>
+      <p id="world-desc">Les sites sont regroupés par liens et par domaine : ceux qui se ressemblent forment un amas.</p>
+    </div>
+
+    <div class="worlds__tabs" role="group" aria-label="Choisir un monde">
+      <button type="button" class="chip is-on" data-world="constellation" aria-pressed="true"><i class="ico ico--const"></i>Constellation</button>
+      <button type="button" class="chip" data-world="ville" aria-pressed="false"><i class="ico ico--city"></i>Ville</button>
+      <button type="button" class="chip" data-world="tunnel" aria-pressed="false"><i class="ico ico--tunnel"></i>Tunnel</button>
+      <span class="worlds__sep" aria-hidden="true"></span>
+      <button type="button" class="chip chip--tool" data-world="arc" aria-pressed="false"><i class="ico ico--arc"></i>Arc</button>
+      <button type="button" class="chip chip--tool" data-world="mur" aria-pressed="false"><i class="ico ico--wall"></i>Mur</button>
+    </div>
+    <p class="worlds__legend" aria-hidden="true"><i class="swatch swatch--now"></i>présent <i class="swatch swatch--past"></i>archives anciennes</p>
+  </div>
+</section>
+
+<!-- ============================================================ TEMPS -->
+<section class="sec sec--time" id="temps" aria-labelledby="temps-title">
+  <div class="wrap wrap--time">
+    <div class="time__intro">
+      <h2 class="h2" id="temps-title">Un curseur, trente ans de web.</h2>
+      <p class="lede">Sur un panneau, le bouton horloge ouvre la machine à remonter le temps : les captures de la Wayback Machine défilent sous un curseur, et la page change sous vos yeux.</p>
+      <ul class="plain">
+        <li>Une capture par mois, de 1996 à aujourd'hui, selon ce que les archives conservent.</li>
+        <li>Dans le monde Tunnel, les pages s'alignent du présent aux archives les plus anciennes.</li>
+        <li>Dans le monde Ville, chaque immeuble est un site et chaque étage une époque.</li>
+      </ul>
+      <p class="fine">Illustration à droite : pages fictives. Access4D n'est pas affilié à Internet Archive.</p>
+    </div>
+
+    <div class="time__stage" id="time-stage">
+      <div class="wb" aria-hidden="true">
+        <span class="wb__dots"><i></i><i></i><i></i></span>
+        <span class="wb__url" id="wb-url">web.archive.org/web/20250612/cafedulac.example</span>
+        <span class="wb__date" id="wb-date">12 juin 2025</span>
+      </div>
+      <div class="tm" id="tm">
+        <div class="tm__world" id="tm-world">
+          <!-- 1996-2000 -->
+          <article class="mock mock--e1" data-year="1998" aria-hidden="true">
+            <div class="mock__body">
+              <h4>Bienvenue sur la page du Café du Lac !</h4>
+              <marquee-fake>*** NOUVEAU *** Ouvert tous les jours ***</marquee-fake>
+              <hr>
+              <p><a>Accueil</a> | <a>Le menu</a> | <a>Livre d'or</a> | <a>Liens</a></p>
+              <p>Vous êtes le <span class="counter">004217</span>e visiteur.</p>
+              <p class="uc">Site en construction</p>
+              <p class="small">Optimisé pour 800x600</p>
+            </div>
+          </article>
+          <!-- 2001-2008 -->
+          <article class="mock mock--e2" data-year="2004" aria-hidden="true">
+            <div class="mock__head"><b>Café du Lac</b><span>Accueil · Carte · Blog · Contact</span></div>
+            <div class="mock__banner"><h4>Le meilleur café du quartier</h4><span class="gloss">Réserver</span></div>
+            <div class="mock__cols"><div><b>Actualités</b><p>Nouvelle carte d'été disponible.</p></div><div><b>Blog</b><p>Notre recette du cappuccino.</p></div></div>
+          </article>
+          <!-- 2009-2014 -->
+          <article class="mock mock--e3" data-year="2011" aria-hidden="true">
+            <div class="mock__head"><b>Café du Lac</b><span>Carte&nbsp;&nbsp;Galerie&nbsp;&nbsp;Contact</span></div>
+            <div class="mock__banner"><h4>Du café, du temps, du calme.</h4></div>
+            <div class="mock__cols"><div><i class="ico3"></i><p>Torréfaction locale</p></div><div><i class="ico3"></i><p>Pâtisseries maison</p></div><div><i class="ico3"></i><p>Terrasse au bord du lac</p></div></div>
+          </article>
+          <!-- 2015-2020 -->
+          <article class="mock mock--e4" data-year="2017" aria-hidden="true">
+            <div class="mock__head"><b>Café du Lac</b><span class="burger"></span></div>
+            <div class="mock__banner"><h4>Bon café.<br>Bonne humeur.</h4><span class="flat">Commander</span></div>
+            <div class="mock__cols"><div class="tile"></div><div class="tile"></div><div class="tile"></div></div>
+          </article>
+          <!-- 2021-2026 -->
+          <article class="mock mock--e5" data-year="2025" aria-hidden="true">
+            <div class="mock__head"><b>Café du Lac</b><span>Menu · Carte fidélité · Panier (0)</span></div>
+            <div class="mock__banner"><h4>Le café, repensé.</h4><span class="glass">Commander en ligne</span></div>
+            <div class="mock__cols"><div class="tile"></div><div class="tile"></div></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="scrub">
+        <label for="year" class="scrub__label">Année de la capture</label>
+        <output class="scrub__year" id="year-out" for="year">2025</output>
+        <input type="range" id="year" min="1996" max="2026" step="0.01" value="2025" aria-valuetext="2025">
+        <div class="scrub__ticks" aria-hidden="true">
+          <span style="--p:0">1996</span><span style="--p:.2">2002</span><span style="--p:.4">2008</span><span style="--p:.6">2014</span><span style="--p:.8">2020</span><span style="--p:1">2026</span>
+        </div>
+        <p class="scrub__era" id="era-name" aria-live="polite">Aujourd'hui</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FONCTIONS -->
+<section class="sec sec--features" id="fonctions" aria-labelledby="fonctions-title">
+  <div class="wrap">
+    <h2 class="h2" id="fonctions-title">Ce qu'il fait, concrètement.</h2>
+    <p class="lede">Choisissez une fonction dans la liste : l'aperçu à côté montre comment elle se comporte.</p>
+
+    <div class="feat">
+      <ul class="feat__list" role="tablist" aria-label="Fonctions d'Access4D">
+        <li><button role="tab" type="button" class="feat__item is-on" data-vis="live" aria-selected="true">
+          <b>Des pages vraiment vivantes</b><span>Chaque panneau est un Chromium complet Windows et Linux, interactif. Pas une capture d'écran.</span></button></li>
+        <li><button role="tab" type="button" class="feat__item" data-vis="map" aria-selected="false">
+          <b>Une mini-carte qui zoome</b><span>Glissez la flèche : plus vous approchez d'un panneau, plus la vue descend et se cadre dessus.</span></button></li>
+        <li><button role="tab" type="button" class="feat__item" data-vis="search" aria-selected="false">
+          <b>Une palette de recherche</b><span>Ctrl+K, quelques lettres, Entrée : la caméra vole jusqu'au panneau.</span></button></li>
+        <li><button role="tab" type="button" class="feat__item" data-vis="rooms" aria-selected="false">
+          <b>Des salles pour ranger vos mondes</b><span>Une salle par projet ou par sujet. Elles sont enregistrées sur votre ordinateur.</span></button></li>
+        <li><button role="tab" type="button" class="feat__item" data-vis="vault" aria-selected="false">
+          <b>Un coffre de mots de passe chiffré</b><span>AES-256-GCM, clé dérivée par scrypt. Le remplissage se fait sur votre clic, sur le site exact.</span></button></li>
+        <li><button role="tab" type="button" class="feat__item" data-vis="block" aria-selected="false">
+          <b>Publicités et pisteurs bloqués</b><span>Un bloqueur intégré, et un bouton pour effacer cookies et cache quand vous voulez.</span></button></li>
+        <li><button role="tab" type="button" class="feat__item" data-vis="sleep" aria-selected="false">
+          <b>La veille des panneaux</b><span>Les panneaux éloignés s'endorment et deviennent un aperçu. Ils se réveillent d'un clic.</span></button></li>
+        <li><button role="tab" type="button" class="feat__item" data-vis="res" aria-selected="false">
+          <b>Une résolution qui s'adapte</b><span>L'image s'allège pendant vos mouvements, puis redevient nette quand vous vous arrêtez.</span></button></li>
+      </ul>
+
+      <div class="feat__stage" aria-live="polite">
+        <!-- live -->
+        <div class="vis is-on" data-vis="live">
+          <div class="v-live">
+            <div class="v-live__win"><i class="bar"></i><div class="v-live__page"><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s></div><span class="cursor"></span></div>
+            <div class="v-live__win v-live__win--b"><i class="bar"></i><div class="v-live__page v-live__page--b"><s></s><s></s><s></s><s></s><s></s></div></div>
+            <div class="v-live__win v-live__win--c"><i class="bar"></i><div class="v-live__page"><s></s><s></s><s></s></div></div>
+            <span class="v-live__tag">cliquez, tapez, défilez</span>
+          </div>
+        </div>
+        <!-- map -->
+        <div class="vis" data-vis="map">
+          <svg viewBox="0 0 320 320" class="v-map" role="img" aria-label="Mini-carte : la flèche approche d'un panneau et la vue zoome">
+            <rect x="8" y="8" width="304" height="304" rx="6" class="map-bg"/>
+            <g class="map-dots">
+              <circle cx="70" cy="80" r="7"/><circle cx="130" cy="130" r="7"/><circle cx="210" cy="70" r="7"/>
+              <circle cx="250" cy="170" r="7"/><circle cx="170" cy="230" r="7"/><circle cx="80" cy="220" r="7"/><circle cx="260" cy="260" r="7"/>
+            </g>
+            <path id="map-path" d="M60 270 C 90 200, 110 160, 130 130 S 230 90, 210 70 S 280 120, 250 170" fill="none" class="map-path"/>
+            <circle r="46" class="map-view"><animateMotion dur="9s" repeatCount="indefinite" keyPoints="0;1;1;0" keyTimes="0;.5;.55;1" calcMode="linear"><mpath href="#map-path"/></animateMotion><animate attributeName="r" values="62;62;22;22;62" keyTimes="0;.15;.5;.55;1" dur="9s" repeatCount="indefinite"/></circle>
+            <g><path d="M0 -9 L7 8 L0 4 L-7 8 Z" class="map-arrow"><animateMotion dur="9s" repeatCount="indefinite" rotate="auto-reverse" keyPoints="0;1;1;0" keyTimes="0;.5;.55;1" calcMode="linear"><mpath href="#map-path"/></animateMotion></path></g>
+          </svg>
+          <p class="vis__note">Loin : la vue monte pour tout embrasser. Près : elle descend et se cadre.</p>
+        </div>
+        <!-- search -->
+        <div class="vis" data-vis="search">
+          <div class="v-search">
+            <div class="v-search__box"><span class="kbd">Ctrl</span><span class="kbd">K</span><span class="v-search__type" id="v-search-type"></span><i class="caret"></i></div>
+            <ul class="v-search__res" id="v-search-res">
+              <li>wikipedia.org</li><li>archive.org</li><li>openstreetmap.org</li>
+            </ul>
+            <div class="v-search__fly"><i></i> la caméra vole vers le panneau</div>
+          </div>
+        </div>
+        <!-- rooms -->
+        <div class="vis" data-vis="rooms">
+          <div class="v-rooms">
+            <div class="v-rooms__tabs"><span class="rt rt--a">Recherche</span><span class="rt rt--b">Cuisine</span><span class="rt rt--c">Voyage</span></div>
+            <div class="v-rooms__scene">
+              <div class="rs rs--a"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="rs rs--b"><i></i><i></i><i></i></div>
+              <div class="rs rs--c"><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+        </div>
+        <!-- vault -->
+        <div class="vis" data-vis="vault">
+          <div class="v-vault">
+            <div class="v-vault__row"><span>mot de passe principal</span><b>••••••••••</b></div>
+            <div class="v-vault__arrow">scrypt</div>
+            <div class="v-vault__row"><span>clé de 256 bits</span><b id="v-key">0000…0000</b></div>
+            <div class="v-vault__arrow">AES-256-GCM</div>
+            <div class="v-vault__row v-vault__row--out"><span>fichier du coffre</span><b id="v-cipher">…</b></div>
+            <p class="vis__note">Rien n'est écrit en clair. Le coffre se reverrouille après 15 minutes. Le mot de passe principal ne peut pas être récupéré.</p>
+          </div>
+        </div>
+        <!-- block -->
+        <div class="vis" data-vis="block">
+          <div class="v-block">
+            <ul id="v-block-list">
+              <li><span>pub.regie-exemple.net</span><i>bloqué</i></li>
+              <li><span>suivi.traceur-exemple.com</span><i>bloqué</i></li>
+              <li><span>cdn.contenu-du-site.fr</span><i class="ok">autorisé</i></li>
+              <li><span>stats.analyse-exemple.io</span><i>bloqué</i></li>
+              <li><span>img.contenu-du-site.fr</span><i class="ok">autorisé</i></li>
+            </ul>
+            <div class="v-block__count"><b id="v-block-n">0</b> requêtes bloquées depuis le lancement</div>
+            <p class="vis__note">Noms d'exemple. Réglages > Confidentialité efface cookies, sessions et cache.</p>
+          </div>
+        </div>
+        <!-- sleep -->
+        <div class="vis" data-vis="sleep">
+          <div class="v-sleep">
+            <div class="sl sl--on"></div><div class="sl sl--on"></div><div class="sl sl--wake"></div>
+            <div class="sl sl--off"><span>z z</span></div><div class="sl sl--off"><span>z z</span></div><div class="sl sl--off"><span>z z</span></div>
+            <p class="vis__note">Le panneau au centre se réveille quand on s'en approche. Compromis : un panneau endormi ne joue plus de son et repart de zéro.</p>
+          </div>
+        </div>
+        <!-- res -->
+        <div class="vis" data-vis="res">
+          <div class="v-res">
+            <canvas id="v-res-canvas" width="320" height="320" aria-label="Une forme en mouvement s'affiche en basse résolution, puis nette à l'arrêt" role="img"></canvas>
+            <p class="vis__note" id="v-res-note">En mouvement : résolution réduite</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h3">Et aussi</h3>
+    <ul class="also">
+      <li>Manœuvrer au-dessus d'une page en maintenant Alt</li>
+      <li>Arc et Mur pour ranger les panneaux</li>
+      <li>Interface masquable (Tab) et plein écran (F11)</li>
+      <li>Sticks tactiles pour voler au doigt</li>
+      <li>Cinq moteurs de recherche au choix</li>
+      <li>Un clic dans une page amène la caméra devant elle</li>
+      <li>Rendu logiciel automatique sans carte graphique</li>
+      <li>Polices embarquées, aucun téléchargement</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ COMMANDES -->
+<section class="sec sec--keys" id="commandes" aria-labelledby="commandes-title">
+  <div class="wrap">
+    <h2 class="h2" id="commandes-title">Se déplacer comme dans un jeu, sans quitter le web.</h2>
+    <p class="lede">Appuyez sur ces touches maintenant : elles s'allument. Dans Access4D, elles font voler la caméra.</p>
+
+    <div class="board" id="board">
+      <div class="board__group board__group--fly">
+        <h3>Voler</h3>
+        <div class="keys keys--wasd">
+          <kbd class="key" data-k="z,w,arrowup">Z</kbd>
+          <kbd class="key" data-k="q,a,arrowleft">Q</kbd>
+          <kbd class="key" data-k="s,arrowdown">S</kbd>
+          <kbd class="key" data-k="d,arrowright">D</kbd>
+        </div>
+        <div class="keys keys--row">
+          <kbd class="key key--wide" data-k=" ">Espace</kbd>
+          <kbd class="key" data-k="c">C</kbd>
+          <kbd class="key key--wide" data-k="shift">Maj</kbd>
+        </div>
+        <p class="board__cap">Z Q S D (ou W A S D, ou les flèches). Espace monte, C descend, Maj accélère.</p>
+      </div>
+      <div class="board__group">
+        <h3>S'orienter</h3>
+        <div class="keys keys--row">
+          <kbd class="key" data-k="h">H</kbd>
+          <kbd class="key key--wide" data-k="home">Accueil</kbd>
+          <kbd class="key" data-k="tab">Tab</kbd>
+        </div>
+        <p class="board__cap">H vous ramène. Accueil donne la vue d'ensemble. Tab masque l'interface.</p>
+        <div class="keys keys--row">
+          <kbd class="key" data-k="control">Ctrl</kbd>
+          <kbd class="key" data-k="k">K</kbd>
+          <kbd class="key" data-k="alt">Alt</kbd>
+          <kbd class="key" data-k="f11">F11</kbd>
+          <kbd class="key" data-k="f12">F12</kbd>
+        </div>
+        <p class="board__cap">Ctrl+K cherche un panneau. Alt (maintenu) manœuvre au-dessus d'une page. F11 plein écran, F12 outils de développement.</p>
+      </div>
+    </div>
+
+    <dl class="mouse">
+      <div><dt>Clic gauche, clic droit, molette sur le fond</dt><dd>Tourner, déplacer, zoomer</dd></div>
+      <div><dt>Clic sur un panneau</dt><dd>La caméra se place face à lui, à distance de lecture</dd></div>
+      <div><dt>Glisser la flèche de la mini-carte</dt><dd>Se déplacer, avec un zoom de proximité</dd></div>
+      <div><dt>Poignée en bas à droite d'un panneau</dt><dd>Le redimensionner</dd></div>
+      <div><dt>Clic droit sur le fond, un astre ou une barre de titre</dt><dd>Menu contextuel</dd></div>
+      <div><dt>Doigt sur écran tactile</dt><dd>Deux sticks à l'écran pour voler et regarder</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============================================================ LÉGÈRETÉ -->
+<section class="sec sec--perf" id="legerete" aria-labelledby="legerete-title">
+  <div class="wrap wrap--perf">
+    <div>
+      <h2 class="h2" id="legerete-title">Mesuré, pas deviné.</h2>
+      <p class="lede">Sans accélération 3D, tout se dessine sur le processeur. Deux causes le saturaient : une mini-carte redessinée quinze fois par seconde sur un fond flou, et un ciel recalculé à chaque image. La v0.4 a corrigé les deux : la carte ne se redessine que si elle change, le ciel est cuit une fois.</p>
+      <p class="fine">Mesures du journal de version : même scène, orbite de caméra, rendu logiciel, environnement de test Linux, v0.3 contre v0.4. Vos chiffres dépendront de votre machine ; le rapport devrait se retrouver. Avec une vraie carte graphique, c'est bien plus fluide.</p>
+    </div>
+    <div class="bars" id="bars">
+      <div class="bar-row" data-a="100" data-b="5" data-max="100">
+        <h3>Processeur, application au repos</h3>
+        <div class="bar bar--old"><i style="--w:1"></i><span>v0.3 · 100 % d'un cœur</span></div>
+        <div class="bar bar--new"><i style="--w:.05"></i><span>v0.4 · 5 %</span></div>
+      </div>
+      <div class="bar-row">
+        <h3>Images par seconde pendant une orbite</h3>
+        <div class="bar bar--old"><i style="--w:.047"></i><span>v0.3 · 0,3</span></div>
+        <div class="bar bar--new"><i style="--w:1"></i><span>v0.4 · 6,4</span></div>
+      </div>
+      <div class="bar-row">
+        <h3>Temps pour une image nette complète</h3>
+        <div class="bar bar--old"><i style="--w:1"></i><span>v0.3 · 2,8 s</span></div>
+        <div class="bar bar--new"><i style="--w:.18"></i><span>v0.4 · 0,5 s</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TÉLÉCHARGER -->
+<section class="sec sec--dl" id="telecharger" aria-labelledby="dl-title">
+  <div class="wrap">
+    <h2 class="h2" id="dl-title">Installer Access4D.</h2>
+    <p class="lede">Version <span data-version>0.5.0</span>, prototype. Un installateur normal : il s'inscrit dans vos applications et peut devenir votre navigateur par défaut.</p>
+    <p class="dl__detect" id="dl-detect" hidden></p>
+
+    <div class="dl">
+      <!-- Windows -->
+      <article class="dl__col" data-os="windows">
+        <h3><i class="osico osico--win"></i>Windows</h3>
+        <p class="dl__req">Windows 10 ou 11, 64 bits</p>
+        <a class="btn btn--dl is-pending" id="dl-windows" href="#" aria-disabled="true" download>Télécharger l'installateur (.exe)</a>
+        <p class="dl__file" data-file="windows"></p>
+        <ol class="dl__steps">
+          <li>Double-cliquez sur le fichier téléchargé.</li>
+          <li>Si Windows affiche « Windows a protégé votre ordinateur » : Informations complémentaires, puis Exécuter quand même. L'installateur n'est pas encore signé.</li>
+          <li>Choisissez « pour moi seul » ou « pour tous », puis le dossier.</li>
+          <li>Pour l'utiliser par défaut : Access4D > Réglages > Général > Navigateur par défaut.</li>
+        </ol>
+      </article>
+
+      <!-- Linux -->
+      <article class="dl__col" data-os="linux">
+        <h3><i class="osico osico--linux"></i>Linux</h3>
+        <p class="dl__req">Debian, Ubuntu, Kali et dérivés (64 bits)</p>
+        <a class="btn btn--dl is-pending" id="dl-linux" href="#" aria-disabled="true" download>Télécharger le paquet (.deb)</a>
+        <p class="dl__file" data-file="linux"></p>
+        <a class="dl__alt is-pending" id="dl-appimage" href="#" aria-disabled="true" download>ou l'AppImage, sans installation</a>
+        <div class="code" id="code-linux">
+          <code>sudo apt install ./access4d_0.5.0_amd64.deb</code>
+          <button type="button" class="copy" data-copy="#code-linux code">Copier</button>
+        </div>
+        <ol class="dl__steps">
+          <li>Utilisez <code>apt install ./</code> et non <code>dpkg -i</code> : les bibliothèques manquantes s'installent seules.</li>
+          <li>Lancez Access4D depuis le menu Applications, ou avec <code>access4d</code>.</li>
+          <li>Désinstaller : <code>sudo apt remove access4d</code>.</li>
+        </ol>
+      </article>
+
+      <!-- Android -->
+      <article class="dl__col" data-os="android">
+        <h3><i class="osico osico--android"></i>Android</h3>
+        <p class="dl__req">Téléphones et tablettes Android</p>
+        <a class="btn btn--dl is-pending" id="dl-android" href="#" aria-disabled="true" download>Télécharger l'APK</a>
+        <p class="dl__file" data-file="android"></p>
+        <ol class="dl__steps">
+          <li>Ouvrez le fichier .apk depuis vos téléchargements.</li>
+          <li>Android demandera d'autoriser l'installation depuis ce navigateur ou ce gestionnaire de fichiers : acceptez pour cette fois.</li>
+          <li>Les mondes se pilotent avec les deux sticks tactiles.</li>
+        </ol>
+        <p class="dl__note" id="android-note">La version Android est en préparation. Le bouton s'activera dès que le fichier sera publié sur cette page.</p>
+      </article>
+    </div>
+    <p class="fine dl__fine">Pas de version macOS pour l'instant. Aucune statistique, aucun pisteur sur cette page.</p>
+  </div>
+</section>
+
+<!-- ============================================================ QUESTIONS -->
+<section class="sec sec--faq" id="questions" aria-labelledby="faq-title">
+  <div class="wrap wrap--faq">
+    <h2 class="h2" id="faq-title">Questions fréquentes</h2>
+    <div class="faq">
+      <details><summary>Est-ce un navigateur complet ?</summary><p>C'est un prototype. Chaque panneau est un vrai Chromium (via Electron), donc les sites s'affichent et fonctionnent normalement. L'interface 3D, le coffre de mots de passe, la machine à remonter le temps et les réglages sont ceux décrits sur cette page. Des limites existent : par exemple, les formulaires dans des sous-cadres (iframes) ne sont pas gérés par le coffre.</p></details>
+      <details><summary>D'où viennent les archives du web ?</summary><p>De la Wayback Machine d'Internet Archive. Access4D en liste les captures d'une adresse et les affiche dans le panneau. Il n'est pas affilié à Internet Archive.</p></details>
+      <details><summary>Mes mots de passe sont-ils en sécurité ?</summary><p>Le coffre est un fichier chiffré (AES-256-GCM) dont la clé est dérivée de votre mot de passe principal par scrypt, dans le dossier de données de l'application. Rien n'est écrit en clair. Attention : le mot de passe principal ne peut pas être récupéré. S'il est perdu, le coffre doit être réinitialisé.</p></details>
+      <details><summary>C'est lent dans ma machine virtuelle.</summary><p>Sans 3D accélérée, le dessin passe par le processeur. Access4D bascule tout seul en rendu logiciel, mais le mieux est d'activer l'accélération 3D de la machine virtuelle (VMware : « Accelerate 3D graphics » et open-vm-tools ; VirtualBox : carte VBoxSVGA, « Enable 3D Acceleration », Additions invités). En attendant : qualité Basse et deux à quatre pages actives.</p></details>
+      <details><summary>Pourquoi Windows affiche-t-il un avertissement à l'installation ?</summary><p>Parce que l'installateur n'est pas signé avec un certificat de signature de code. C'est le même message que pour n'importe quel logiciel non signé. Informations complémentaires, puis Exécuter quand même.</p></details>
+      <details><summary>Comment le choisir comme navigateur par défaut ?</summary><p>Sous Windows, Réglages > Général > Navigateur par défaut ouvre « Applications par défaut » : choisissez Access4D pour HTTP et HTTPS (Windows impose ce clic). Sous Linux, le même bouton définit le navigateur par défaut du système.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="foot__brand"><img src="img/favicon.png" width="28" height="28" alt=""><b>Access4D</b></div>
+    <p>Conçu par Erick Benoit Birhaheka. Three.js et Electron. Polices Geist (licence SIL OFL).</p>
+    <p class="foot__ver">Prototype v<span data-version>0.5.0</span></p>
+  </div>
+</footer>
+
+</body>
+</html>
